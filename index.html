@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> <!-- From Freepik -->
+    <title>Memory Game</title>
+</head>
+<body class="dark-theme light-theme">
+    
+    <div id="container">
+        <header>
+            <div class="scoreboard">
+                <h2>Player 1</h2>
+                <h1 class="score" id="player1">0</h1>
+            </div>
+
+            <h1>MEMORY GAME</h1>
+            
+            <div class="scoreboard">
+                <h2>Player 2</h2>
+                <h1 class="score" id="player2">0</h1>
+            </div>
+        </header>
+
+        <!-- ===================== -->
+
+        <div id="gameArea">
+
+            <!-- *Images hidden* -->
+
+            <div class="menu" id="menu">
+
+                <div id="menu_names">
+                    <input type="text" value="Player1" class="names">
+                    <input type="text" value="Player2" class="names">
+                </div>
+
+                <button class="menu_button" onclick="init_game(0)">⟲</button>
+                <button class="menu_button" onclick="">Game Size</button>
+                <button class="menu_button" onclick="">Change Score</button>
+                <button class="menu_button" onclick="">Reset Points</button>
+
+            </div>
+
+        </div>
+
+        <!-- ===================== -->
+
+        <footer>
+
+        </footer>
+        
+    </div>
+    
+    <!-- From Uiverse.io by Galahhad --> 
+    <label class="ui-switch" id="switch">
+        <input type="checkbox">
+        <div class="slider">
+        <div class="circle"></div>
+        </div>
+    </label>
+    <button id="open_menu_button" onclick="add_or_remove_menu()"><img src="images/icons/pausa.png" style="height: 100%;"></button>
+  
+
+    <script src="script.js"></script>
+</body>
+</html>
