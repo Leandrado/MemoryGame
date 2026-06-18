@@ -38,9 +38,16 @@
                 </div>
 
                 <button class="menu_button" onclick="init_game(0)">⟲</button>
-                <button class="menu_button" onclick="">Game Size</button>
+                <button class="menu_button" onclick="add_or_remove_number_cards()">Game Size</button>
                 <button class="menu_button" onclick="">Change Score</button>
                 <button class="menu_button" onclick="">Reset Points</button>
+
+                <div class="number_cards" id="number_cards">
+                    <button class="number_cards_button" onclick="init_game(4)">4x4</button>
+                    <button class="number_cards_button" onclick="init_game(5)">5x5</button>
+                    <button class="number_cards_button" onclick="init_game(6)">6x6</button>
+                    <button class="number_cards_button" onclick="init_game(7)">7x7</button>
+                </div>
 
             </div>
 
@@ -54,6 +61,10 @@
         
     </div>
     
+    <button id="open_menu_button" onclick="add_or_remove_menu()">
+        <img src="images/icons/pausa.png" style="height: 100%;">
+    </button>
+    
     <!-- From Uiverse.io by Galahhad --> 
     <label class="ui-switch" id="switch">
         <input type="checkbox">
@@ -61,8 +72,6 @@
         <div class="circle"></div>
         </div>
     </label>
-    <button id="open_menu_button" onclick="add_or_remove_menu()"><img src="images/icons/pausa.png" style="height: 100%;"></button>
-  
 
     <script src="script.js"></script>
 </body>

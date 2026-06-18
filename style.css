@@ -1,4 +1,4 @@
-/**
+/*
 Paleta
 
 Principal	#007D95
@@ -64,19 +64,23 @@ header {
 #gameArea {
   position: relative;
   display: grid;
+  width: 98%;
+  height: 96%;
   place-items: center;
   justify-content: center;
+  gap: 1%;
+  margin: 1%;
 }
 
 .cards_image {
   display: flex;
   position: relative;
-  width: 100px;
-  height: 60px;
+  width: 100%;
   inset: 0;
   z-index: 1;
 }
 
+/* Menu */
 .menu {
   display: flex;
   flex-direction: column;
@@ -124,16 +128,41 @@ header {
   color: #F5F7FA;
 }
 
+.number_cards {
+  display: flex;
+  position: absolute;
+  width: 75%;
+  height: 30%;
+  justify-content: center;
+  align-items: center;
+  gap: 2%;
+  background-color: #007D95;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 3;
+}
+
+.number_cards.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.number_cards_button {
+  display: flex;
+  position: relative;
+  width: 22%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+  background-color: #1B1F23;
+  color: #F5F7FA;
+}
+
+/* Footer */
 footer {
   display: grid;
   background-color: #00A8C8;
-}
-
-#switch {
-  display: flex;
-  position: absolute;
-  top: 3%;
-  right: 2.2vw;
 }
 
 #open_menu_button {
@@ -144,6 +173,13 @@ footer {
   width: 5vh;
   background-color: azure;
   border: none;
+}
+
+#switch {
+  display: flex;
+  position: absolute;
+  top: 3%;
+  left: 2.2vw;
 }
 
 /* From Uiverse.io by Galahhad */ 
