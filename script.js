@@ -8,6 +8,7 @@ let number_cards = document.getElementById("number_cards")
 
 let game_area = document.getElementById("gameArea")
 
+var game_size = 5
 
 // ======= Functions ========
 function init_game(row_column){
@@ -51,6 +52,16 @@ function add_or_remove_number_cards() {
     number_cards.classList.toggle("active")
 }
 
-var game_size = 5
+// Check if the user change the window size
+let resizeTimer;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    
+    resizeTimer = setTimeout(() => {
+        init_game(game_size)
+        menu.classList.toggle("active")
+    }, 150);
+});
+
 init_game(game_size)
 add_or_remove_menu()
