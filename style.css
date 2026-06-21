@@ -37,11 +37,15 @@ body {
 }
 
 h1 {
-    font-size: 3rem;   
+    font-size: 3rem;
 }
 
 button {
   cursor: pointer;
+}
+
+dialog[open] {
+  display: flex
 }
 
 #container {
@@ -82,26 +86,34 @@ header {
 
 /* Menu */
 .menu {
-  display: flex;
   flex-direction: column;
   position: absolute;
   align-items: center;
   justify-content: center;
   justify-items: center;
-  width: 50%;
-  height: 80%;
+  width: 40%;
+  height: 70%;
+  top: 7%;
   background-color: #00A8C8;
   margin: auto;
-  visibility: hidden;
-  opacity: 0;
   z-index: 2;
-  padding: 5px;
-  gap: 10px;
+  padding: 1%;
+  gap: 2%;
 }
 
-.menu.active {
-  visibility: visible;
-  opacity: 1;
+.menu::backdrop {
+  background-color: rgba(0,0,0,0.5);
+}
+
+#close_menu_btn {
+  position: absolute;
+  width: 5vh;
+  height: 5vh;
+  right: 0;
+  top: 0;
+  margin: 3%;
+  border: none;
+  background: none;
 }
 
 #menu_names {
@@ -117,7 +129,7 @@ header {
 .names {
   width: 80%;
   height: 80%;
-  font-size: 2vw
+  font-size: 2vw;
 }
 
 .menu_button{
@@ -126,6 +138,7 @@ header {
   height: 18%;
   background-color: #1B1F23;
   color: #F5F7FA;
+  font-size: 2vw;
 }
 
 .number_cards {
@@ -171,7 +184,7 @@ footer {
   right: 2.2vw;
   height: 5vh;
   width: 5vh;
-  background-color: azure;
+  background-color: none;
   border: none;
 }
 

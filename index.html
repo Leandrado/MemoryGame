@@ -12,15 +12,15 @@
     <div id="container">
         <header>
             <div class="scoreboard">
-                <h2>Player 1</h2>
-                <h1 class="score" id="player1">0</h1>
+                <h2 id="player1">Player 1</h2>
+                <h1 class="score" id="player1_score">0</h1>
             </div>
 
             <h1>MEMORY GAME</h1>
             
             <div class="scoreboard">
-                <h2>Player 2</h2>
-                <h1 class="score" id="player2">0</h1>
+                <h2 id="player2">Player 2</h2>
+                <h1 class="score" id="player2_score">0</h1>
             </div>
         </header>
 
@@ -30,11 +30,15 @@
 
             <!-- *Images hidden* -->
 
-            <div class="menu" id="menu">
+            <dialog class="menu" id="menu">
 
+                <button id="close_menu_btn" onclick="close_menu()">
+                    <img src="images/icons/close.png" style="height: 100%;">
+                </button>
+                 
                 <div id="menu_names">
-                    <input type="text" value="Player1" class="names">
-                    <input type="text" value="Player2" class="names">
+                    <input type="text" value="Player1" class="names" id="player1_name">
+                    <input type="text" value="Player2" class="names" id="player2_name">
                 </div>
 
                 <button class="menu_button" onclick="init_game(0)">⟲</button>
@@ -49,7 +53,7 @@
                     <button class="number_cards_button" onclick="init_game(7)">7x7</button>
                 </div>
 
-            </div>
+            </dialog>
 
         </div>
 
@@ -61,7 +65,7 @@
         
     </div>
     
-    <button id="open_menu_button" onclick="add_or_remove_menu()">
+    <button id="open_menu_button" onclick="open_menu()">
         <img src="images/icons/pausa.png" style="height: 100%;">
     </button>
     
