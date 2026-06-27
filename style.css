@@ -26,6 +26,7 @@ Erro/Reset	#E74C3C
     padding: 0;
     font-family: Arial, Helvetica, sans-serif; /*Change*/
     text-align: center;
+    overflow: hidden;
 }
 
 body {
@@ -65,6 +66,29 @@ header {
     align-items: center;
 }
 
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.player_turn {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  border-radius: 50%;
+  background-color: red;
+  border: 1px solid black;
+}
+
+#player1_turn.turn_true, #player2_turn.turn_true {
+  background-color: green;
+}
+
+#player1_turn {
+  align-self: end;
+}
+
 #gameArea {
   position: relative;
   display: grid;
@@ -85,33 +109,50 @@ header {
 }
 
 /* Menu */
-.menu {
-  flex-direction: column;
+#menu {
   position: absolute;
-  align-items: center;
+  background-color: #00A8C8;
+  margin: auto;
   justify-content: center;
+  align-items: center;
+}
+
+#menu::backdrop {
+  background-color: rgba(0,0,0,0.5);
+}
+
+#main_menu {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
   justify-items: center;
-  width: 40%;
-  height: 70%;
-  top: 7%;
+  width: 100%;
+  height: 96%;
   background-color: #00A8C8;
   margin: auto;
   z-index: 2;
-  padding: 1%;
-  gap: 2%;
+  margin-top: 3%;
+  gap: 1.5%;
+  opacity: 0;
+  visibility: hidden;
 }
 
-.menu::backdrop {
-  background-color: rgba(0,0,0,0.5);
+#main_menu.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 #close_menu_btn {
   position: absolute;
-  width: 5vh;
-  height: 5vh;
+  width: 2.5cqw;
+  height: 2.5cqw;
   right: 0;
   top: 0;
-  margin: 3%;
+  right: 0;
+  margin-top: 3%;
+  margin-right: 1.8%;
+  z-index: 3;
   border: none;
   background: none;
 }
@@ -141,21 +182,20 @@ header {
   font-size: 2vw;
 }
 
-.number_cards {
+#number_cards {
   display: flex;
   position: absolute;
-  width: 75%;
-  height: 30%;
+  width: 85%;
+  height: 100%;
   justify-content: center;
   align-items: center;
   gap: 2%;
-  background-color: #007D95;
   opacity: 0;
   visibility: hidden;
   z-index: 3;
 }
 
-.number_cards.active {
+#number_cards.active {
   opacity: 1;
   visibility: visible;
 }
@@ -182,9 +222,10 @@ footer {
   position: absolute;
   top: 3%;
   right: 2.2vw;
-  height: 5vh;
-  width: 5vh;
+  height: 2.5vw;
+  width: 2.5vw;
   background-color: none;
+  background: none;
   border: none;
 }
 
@@ -200,10 +241,10 @@ footer {
 .ui-switch {
     /* switch */
     --switch-bg: rgb(135, 150, 165);
-    --switch-width: 48px;
-    --switch-height: 20px;
+    --switch-width: 3.2vw;
+    --switch-height: 2vw;
     /* circle */
-    --circle-diameter: 32px;
+    --circle-diameter: 1.85vw;
     --circle-bg: rgb(0, 56, 146);
     --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
   }

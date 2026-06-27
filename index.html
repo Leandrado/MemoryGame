@@ -14,13 +14,15 @@
             <div class="scoreboard">
                 <h2 id="player1">Player 1</h2>
                 <h1 class="score" id="player1_score">0</h1>
+                <div class="player_turn" id="player1_turn"></div>
             </div>
-
+            
             <h1>MEMORY GAME</h1>
             
             <div class="scoreboard">
                 <h2 id="player2">Player 2</h2>
                 <h1 class="score" id="player2_score">0</h1>
+                <div class="player_turn" id="player2_turn"></div>
             </div>
         </header>
 
@@ -31,26 +33,27 @@
             <!-- *Images hidden* -->
 
             <dialog class="menu" id="menu">
-
-                <button id="close_menu_btn" onclick="close_menu()">
+                <button id="close_menu_btn" onclick="close_layers(1)">
                     <img src="images/icons/close.png" style="height: 100%;">
                 </button>
-                 
-                <div id="menu_names">
-                    <input type="text" value="Player1" class="names" id="player1_name">
-                    <input type="text" value="Player2" class="names" id="player2_name">
+
+                <div id="main_menu">
+                    <div id="menu_names">
+                        <input type="text" value="Player1" class="names" id="player1_name">
+                        <input type="text" value="Player2" class="names" id="player2_name">
+                    </div>
+
+                    <button class="menu_button" onclick="init_round(0)">⟲</button>
+                    <button class="menu_button" onclick="add_or_remove_number_cards()">Game Size</button>
+                    <button class="menu_button" onclick="">Change Score</button>
+                    <button class="menu_button" onclick="">Reset Points</button>
                 </div>
-
-                <button class="menu_button" onclick="init_game(0)">⟲</button>
-                <button class="menu_button" onclick="add_or_remove_number_cards()">Game Size</button>
-                <button class="menu_button" onclick="">Change Score</button>
-                <button class="menu_button" onclick="">Reset Points</button>
-
-                <div class="number_cards" id="number_cards">
-                    <button class="number_cards_button" onclick="init_game(4)">4x4</button>
-                    <button class="number_cards_button" onclick="init_game(5)">5x5</button>
-                    <button class="number_cards_button" onclick="init_game(6)">6x6</button>
-                    <button class="number_cards_button" onclick="init_game(7)">7x7</button>
+            
+                <div id="number_cards">
+                    <button class="number_cards_button" onclick="init_round(4)">4x4</button>
+                    <button class="number_cards_button" onclick="init_round(5)">5x5</button>
+                    <button class="number_cards_button" onclick="init_round(6)">6x6</button>
+                    <button class="number_cards_button" onclick="init_round(7)">7x7</button>
                 </div>
 
             </dialog>
