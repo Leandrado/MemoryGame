@@ -1,34 +1,100 @@
-// ===== Players =====
-const player1 = document.getElementById("player1")
-const player2 = document.getElementById("player2")
-
+// ====== Players ======
+// === Players Vars ===
 const player1_name = document.getElementById("player1_name")
 const player2_name = document.getElementById("player2_name")
 
 const player1_turn = document.getElementById("player1_turn")
 const player2_turn = document.getElementById("player2_turn")
 
+const player1_font_color = document.querySelectorAll(".player1_font_color")
+const player2_font_color = document.querySelectorAll(".player2_font_color")
+
+let player1_color = document.getElementById("player1_color").value
+let player2_color = document.getElementById("player2_color").value
+
+const player1_score_elements = document.querySelectorAll(".player1_score")
+const player2_score_elements = document.querySelectorAll(".player2_score")
+
+const player1_score_header = document.getElementById("player1_score")
+const player2_score_header = document.getElementById("player2_score")
+
+const player_score_inputs = document.querySelectorAll(".players_score")
+// === Player Vars ===
+
+// === Players Events ===
 player1_name.addEventListener("input", (event) => {
-    player1.innerHTML = event.target.value
+    player1_font_color.forEach(element => {
+        if (element.tagName.toLocaleLowerCase() != 'span'){
+            element.innerHTML = event.target.value
+        }
+    })
 })
 
 player2_name.addEventListener("input", (event) => {
-    player2.innerHTML = event.target.value
+    player2_font_color.forEach(element => {
+        if (element.tagName.toLocaleLowerCase() != 'span'){
+            element.innerHTML = event.target.value
+        }
+    })
 })
 
-// Vars
-let menu = document.getElementById("menu")
-let main_menu = document.getElementById("main_menu")
-let number_cards = document.getElementById("number_cards") 
+document.getElementById("player1_color").addEventListener("input", (event) => {
+    player1_color = event.target.value
+    change_player_name_color()
+})
 
-let game_area = document.getElementById("gameArea")
+document.getElementById("player2_color").addEventListener("input", (event) => {
+    player2_color = event.target.value
+    change_player_name_color()
+})
 
+document.querySelectorAll(".win_score").forEach(element => {
+    element.addEventListener("input", (event) => {
+        win_score = event.target.value
+        change_win_score()
+    })
+})
+
+player1_score_elements.forEach(element => {
+    element.addEventListener("input", (event) => {
+        let score = event.target.value
+        change_player_score("player1", score)
+    })
+})
+
+player2_score_elements.forEach(element => {
+    element.addEventListener("input", (event) => {
+        let score = event.target.value
+        change_player_score("player2", score)
+    })
+})
+// *** Player Events ***
+// ****** Players ******
+
+
+// ====== Vars ======
+// === Elements ===
+const menu = document.getElementById("menu")
+const main_menu = document.getElementById("main_menu")
+const number_cards = document.getElementById("number_cards") 
+const change_score_menu = document.getElementById("change_score_menu")
+const game_area = document.getElementById("gameArea")
+// *** Elements ***
+
+// === Global vars ===
 var game_size = 5
+
 var menu_layer = 0
 
 var what_player_turn = 0
 
+var win_score = 1
+// *** Global vars ***
+// ****** Vars ******
+
+
 // ======= Functions ========
+// === Cards Functions ===
 function calc_images_height(row_column) {
     let game_area_heigth = game_area.getBoundingClientRect().height
     let cards_image_height = `${(game_area_heigth / (row_column + 1))}px`
@@ -65,6 +131,17 @@ function init_round(row_column){
     game_size = row_column
 }
 
+window.addEventListener("resize", () => { // Check if the user change the window size
+    let card_images_height = calc_images_height(game_size)
+    let cards = document.querySelectorAll(".cards_image")
+    cards.forEach((element) => {
+        element.style.height = "auto"
+        element.style.height = card_images_height
+    })
+})
+// *** Cards Functions ***
+
+// === Menu Functions ===
 function witch_menu(menu_h, menu_w) {
     if (menu_layer <= 0) {
         main_menu.classList.remove("active")
@@ -72,6 +149,7 @@ function witch_menu(menu_h, menu_w) {
     }
     else if (menu_layer == 1) {
         number_cards.classList.remove("active")
+        change_score_menu.classList.remove("active")
         menu.style.height = "70%"
         menu.style.width = "40%"
         menu.style.top = "7vh"
@@ -82,7 +160,6 @@ function witch_menu(menu_h, menu_w) {
         menu.style.height = menu_h
         menu.style.width = menu_w
     }
-
 }
 
 function open_menu() {
@@ -96,22 +173,20 @@ function close_layers(layer) {
     witch_menu()
 }
 
-function add_or_remove_number_cards() {
+function add_number_cards() {
     number_cards.classList.add("active")
     menu_layer += 1
     witch_menu("25%", "35%")
 }
 
-// Check if the user change the window size
-window.addEventListener("resize", () => {
-    let card_images_height = calc_images_height(game_size)
-    let cards = document.querySelectorAll(".cards_image")
-    cards.forEach((element) => {
-        element.style.height = "auto"
-        element.style.height = card_images_height
-    })
-})
+function open_change_score_menu() {
+    change_score_menu.classList.add("active")
+    menu_layer += 1
+    witch_menu("65%", "38%")
+}
+// *** Menu Functions ***
 
+// === Player Functions ===
 function sorter_player_turn() {
     what_player_turn = Math.floor(Math.random() * 2) + 1;
     if (what_player_turn == 1){
@@ -124,10 +199,63 @@ function sorter_player_turn() {
     }
 }
 
+function change_player_name_color() {
+    player1_font_color.forEach((element) => {
+        element.style.color = player1_color
+    })
+    player2_font_color.forEach((element) => {
+        element.style.color = player2_color
+    })
+}
+
+function change_win_score() {
+    document.querySelectorAll(".win_score").forEach(element => {
+        element.value = win_score
+    })
+    
+    let max_players_input = win_score - 1
+    
+    player_score_inputs.forEach(element => {
+        element.max = max_players_input
+        
+        if (element.value > (max_players_input) && win_score != 0) {
+            element.value = max_players_input
+
+            if (element.classList.contains("player1_score")) {
+                change_player_score("player1", max_players_input)
+            }
+            else if(element.classList.contains("player2_score")){
+                change_player_score("player2", max_players_input)        
+            }
+        }
+    })
+}
+
+function change_player_score(player_name, score) {
+    if (player_name == "player1"){
+        player1_score_elements.forEach(element => {
+            element.value = score
+        })
+
+        player1_score_header.textContent = score
+    }
+    else if (player_name == "player2") {
+        player2_score_elements.forEach(element => {
+            element.value = score
+        })
+        player2_score_header.textContent = score
+    }
+}
+// *** Player Functions ***
+// ****** Functions ****** 
+
+
 // ====== Start ======
 function init_game() {
     sorter_player_turn()
     init_round(game_size)
+    change_player_name_color()
+    change_win_score()
 }
 
 init_game()

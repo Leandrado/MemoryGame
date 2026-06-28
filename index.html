@@ -12,16 +12,19 @@
     <div id="container">
         <header>
             <div class="scoreboard">
-                <h2 id="player1">Player 1</h2>
-                <h1 class="score" id="player1_score">0</h1>
+                <h2 class="player1_font_color">Player 1</h2>
+                <h1 id="player1_score">0</h1>
                 <div class="player_turn" id="player1_turn"></div>
             </div>
             
-            <h1>MEMORY GAME</h1>
+            <h1>
+                <span class="player1_font_color">MEMORY</span>
+                <span class="player2_font_color">GAME</span>
+            </h1>
             
             <div class="scoreboard">
-                <h2 id="player2">Player 2</h2>
-                <h1 class="score" id="player2_score">0</h1>
+                <h2 class="player2_font_color">Player 2</h2>
+                <h1 id="player2_score">0</h1>
                 <div class="player_turn" id="player2_turn"></div>
             </div>
         </header>
@@ -39,13 +42,13 @@
 
                 <div id="main_menu">
                     <div id="menu_names">
-                        <input type="text" value="Player1" class="names" id="player1_name">
-                        <input type="text" value="Player2" class="names" id="player2_name">
+                        <input type="text" value="Player1" id="player1_name" class="names player1_font_color">
+                        <input type="text" value="Player2" id="player2_name" class="names player2_font_color">
                     </div>
 
                     <button class="menu_button" onclick="init_round(0)">⟲</button>
-                    <button class="menu_button" onclick="add_or_remove_number_cards()">Game Size</button>
-                    <button class="menu_button" onclick="">Change Score</button>
+                    <button class="menu_button" onclick="add_number_cards()">Game Size</button>
+                    <button class="menu_button" onclick="open_change_score_menu()">Change Score</button>
                     <button class="menu_button" onclick="">Reset Points</button>
                 </div>
             
@@ -54,6 +57,39 @@
                     <button class="number_cards_button" onclick="init_round(5)">5x5</button>
                     <button class="number_cards_button" onclick="init_round(6)">6x6</button>
                     <button class="number_cards_button" onclick="init_round(7)">7x7</button>
+                </div>
+
+                <div id="change_score_menu">
+                    <div id="scoreboard_menu_container">
+                        <div class="scoreboard_menu">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <h2 class="player1_font_color">Player 1</h2>
+                                <input type="color" id="player1_color" value="#0000ff">
+                            </div>
+
+                            <input type="range" min="0" value="0" id="player1_score_range" class="players_score player1_score">
+                            <input type="number" value="0" id="player1_score_number" class="players_score player1_score">
+                        </div>
+                        
+
+                        <div class="scoreboard_menu">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <h2 class="player2_font_color">Player 2</h2>
+                                <input type="color" id="player2_color" value="#ff0000">
+                            </div>
+
+                            <input type="range" min="0" value="0" id="player2_score_range" class="players_score player2_score">
+                            <input type="number" value="0" id="player2_score_number" class="players_score player2_score">
+                        </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div id="win_score_menu">
+                        <h2>Score to Win</h2>
+                        <input type="range" class="win_score" min="0" max="30" value="0">
+                        <input type="number" class="win_score" value="0">
+                    </div>
                 </div>
 
             </dialog>

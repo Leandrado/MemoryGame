@@ -11,8 +11,6 @@ Texto Secundário	#B0BAC5
 Vitória	#4CAF50
 Erro/Reset	#E74C3C
 
-*/
-
 .dark-theme{
   --bg: #3A424A;
 }
@@ -20,7 +18,9 @@ Erro/Reset	#E74C3C
 .light-theme{
   --bg: white;
 }
+*/
 
+/* Basic Elements */
 * {
     margin: 0;
     padding: 0;
@@ -41,14 +41,44 @@ h1 {
     font-size: 3rem;
 }
 
-button {
+h2 {
+  align-items: center;
+}
+
+hr {
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+
+button, input[type="range"] {
   cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+}
+
+input[type="color"] {
+  width: 1.3cqw;
+  height: 1.3cqw;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
 }
 
 dialog[open] {
   display: flex
 }
 
+/* Elements */
 #container {
     display: grid;
     position: relative;
@@ -77,11 +107,12 @@ header {
   width: 1vw;
   height: 1vw;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(46, 42, 42);
   border: 1px solid black;
 }
 
-#player1_turn.turn_true, #player2_turn.turn_true {
+#player1_turn.turn_true,
+#player2_turn.turn_true {
   background-color: green;
 }
 
@@ -138,11 +169,6 @@ header {
   visibility: hidden;
 }
 
-#main_menu.active {
-  opacity: 1;
-  visibility: visible;
-}
-
 #close_menu_btn {
   position: absolute;
   width: 2.5cqw;
@@ -195,11 +221,6 @@ header {
   z-index: 3;
 }
 
-#number_cards.active {
-  opacity: 1;
-  visibility: visible;
-}
-
 .number_cards_button {
   display: flex;
   position: relative;
@@ -210,6 +231,50 @@ header {
   font-size: 2vw;
   background-color: #1B1F23;
   color: #F5F7FA;
+}
+
+#change_score_menu {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 80%;
+  height: 96%;
+  opacity: 0;
+  visibility: hidden;
+  gap: 1%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#scoreboard_menu_container {
+  display: flex;
+  justify-content: space-between;
+  background-color: green;
+  width: 100%;
+  height: 100%;
+}
+
+.scoreboard_menu {
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+  width: 40%;
+  background-color: darkgreen;
+}
+
+#win_score_menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: chartreuse;
+}
+
+#main_menu.active,
+#number_cards.active,
+#change_score_menu.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Footer */
