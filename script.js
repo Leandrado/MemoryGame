@@ -168,8 +168,8 @@ function open_menu() {
     witch_menu()
 }
 
-function close_layers() {
-    menu_layer--
+function close_layers(layer) {
+    menu_layer -= layer
     witch_menu()
 }
 
@@ -250,6 +250,7 @@ function change_player_score(player_name, score) {
 function reset_points() {
     change_player_score("player1", 0)
     change_player_score("player2", 0)
+    close_layers(2)
 }
 // *** Player Functions ***
 // ****** Functions ****** 
