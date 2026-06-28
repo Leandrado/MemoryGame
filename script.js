@@ -1,3 +1,24 @@
+// ====== Vars ======
+// === Elements ===
+const menu = document.getElementById("menu")
+const main_menu = document.getElementById("main_menu")
+const number_cards = document.getElementById("number_cards") 
+const change_score_menu = document.getElementById("change_score_menu")
+const game_area = document.getElementById("gameArea")
+// *** Elements ***
+
+// === Global vars ===
+var game_size = 5
+
+var menu_layer = 0
+
+var what_player_turn = 0
+
+var win_score = 1
+// *** Global vars ***
+// ****** Vars ******
+
+
 // ====== Players ======
 // === Players Vars ===
 const player1_name = document.getElementById("player1_name")
@@ -70,27 +91,6 @@ player2_score_elements.forEach(element => {
 })
 // *** Player Events ***
 // ****** Players ******
-
-
-// ====== Vars ======
-// === Elements ===
-const menu = document.getElementById("menu")
-const main_menu = document.getElementById("main_menu")
-const number_cards = document.getElementById("number_cards") 
-const change_score_menu = document.getElementById("change_score_menu")
-const game_area = document.getElementById("gameArea")
-// *** Elements ***
-
-// === Global vars ===
-var game_size = 5
-
-var menu_layer = 0
-
-var what_player_turn = 0
-
-var win_score = 1
-// *** Global vars ***
-// ****** Vars ******
 
 
 // ======= Functions ========
@@ -168,12 +168,12 @@ function open_menu() {
     witch_menu()
 }
 
-function close_layers(layer) {
-    menu_layer -= layer
+function close_layers() {
+    menu_layer--
     witch_menu()
 }
 
-function add_number_cards() {
+function open_number_cards_menu() {
     number_cards.classList.add("active")
     menu_layer += 1
     witch_menu("25%", "35%")
@@ -245,6 +245,11 @@ function change_player_score(player_name, score) {
         })
         player2_score_header.textContent = score
     }
+}
+
+function reset_points() {
+    change_player_score("player1", 0)
+    change_player_score("player2", 0)
 }
 // *** Player Functions ***
 // ****** Functions ****** 

@@ -36,7 +36,7 @@
             <!-- *Images hidden* -->
 
             <dialog class="menu" id="menu">
-                <button id="close_menu_btn" onclick="close_layers(1)">
+                <button id="close_menu_btn" onclick="close_layers()">
                     <img src="images/icons/close.png" style="height: 100%;">
                 </button>
 
@@ -47,9 +47,9 @@
                     </div>
 
                     <button class="menu_button" onclick="init_round(0)">⟲</button>
-                    <button class="menu_button" onclick="add_number_cards()">Game Size</button>
+                    <button class="menu_button" onclick="open_number_cards_menu()">Game Size</button>
                     <button class="menu_button" onclick="open_change_score_menu()">Change Score</button>
-                    <button class="menu_button" onclick="">Reset Points</button>
+                    <button class="menu_button" onclick="reset_points()">Reset Points</button>
                 </div>
             
                 <div id="number_cards">
